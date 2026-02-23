@@ -3,218 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GROWPRIME – Login & Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background: linear-gradient(135deg,#0b0b0f,#1a1a24);color:#fff;line-height:1.7;}
-a{text-decoration:none;}
+<title>GROWPRIME – One Course, Multiple Income Skills</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-/* Login Page */
-.login-container{
-  display:flex;flex-wrap:wrap;
-  background: rgba(19,19,26,0.9);border-radius:20px;overflow:hidden;
-  box-shadow:0 15px 50px rgba(0,0,0,0.6);width:90%;max-width:900px;
-  margin:60px auto;display:flex;
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0b0b0f;color:#fff;line-height:1.7}
+a{text-decoration:none}
+.container{max-width:1100px;margin:auto;padding:40px 20px}
+
+header{text-align:center;padding:80px 20px}
+header h1{font-size:3rem;font-weight:700}
+header span{color:#f7c948}
+header p{margin-top:15px;color:#cfcfcf}
+
+.price-box{margin-top:25px}
+.old-price{color:#777;text-decoration:line-through}
+.new-price{font-size:2.5rem;color:#f7c948;font-weight:700}
+
+.offer-badge{
+margin-top:12px;
+display:inline-block;
+padding:6px 18px;
+border:1px solid #f7c948;
+border-radius:20px;
+font-size:0.85rem;
+color:#f7c948;
+background:#13131a;
 }
-.left, .right{flex:1 1 300px;padding:50px 30px;color:#fff;}
-.left{background:url('https://i.ibb.co/3M4t8vF/growprime-bg.png') center/cover no-repeat;position:relative;}
-.left::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.5);border-radius:20px 0 0 20px;}
-.left h2{position:relative;font-size:2.5rem;margin-bottom:20px;color:#f7c948;}
-.left p{position:relative;font-size:1rem;color:#ddd;line-height:1.5;}
-.right{display:flex;flex-direction:column;justify-content:center;}
-.right h2{font-size:2rem;margin-bottom:25px;color:#f7c948;text-align:center;}
-.right input{width:100%;padding:14px;margin:12px 0;border-radius:12px;border:none;outline:none;background:#1a1a28;color:#fff;}
-.right button{width:100%;padding:14px;margin-top:15px;border:none;border-radius:30px;background: linear-gradient(135deg,#f7c948,#ff9f1c);color:#000;font-weight:600;cursor:pointer;transition:0.3s;}
-.right button:hover{box-shadow:0 0 20px #f7c948;}
-.whatsapp{width:100%;margin-top:15px;padding:14px;border-radius:30px;background:#25D366;color:#000;font-weight:600;cursor:pointer;text-align:center;transition:0.3s;}
-.whatsapp:hover{box-shadow:0 0 20px #25D366;}
-.note{font-size:0.8rem;text-align:center;margin-top:10px;color:#ccc;}
-@media(max-width:768px){.login-container{flex-direction:column;}.left{height:200px;}}
-/* Dashboard Page */
-#dashboard{display:none;}
-.container{max-width:1100px;margin:auto;padding:40px 20px;}
-header{text-align:center;padding:80px 20px;}
-header h1{font-size:3rem;font-weight:700;}
-header span{color:#f7c948;}
-header p{margin-top:15px;font-size:1.1rem;color:#cfcfcf;}
-.price-box{margin-top:25px;}
-.old-price{font-size:1.2rem;color:#999;text-decoration:line-through;}
-.new-price{font-size:2.4rem;color:#f7c948;font-weight:700;}
-.offer-badge{margin-top:12px;display:inline-block;padding:6px 18px;border:1px solid #f7c948;border-radius:20px;font-size:0.85rem;font-weight:600;color:#f7c948;background:#13131a;}
-.btn{display:inline-block;margin-top:30px;padding:14px 32px;background:linear-gradient(135deg,#f7c948,#ff9f1c);color:#000;font-weight:600;border-radius:40px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
-.card{background:#13131a;border-radius:16px;padding:25px;border:1px solid #1f1f2b;}
-.card h3{margin-bottom:10px;color:#f7c948;}
-.card p{color:#d0d0d0;font-size:0.95rem;}
-.highlight{text-align:center;margin-top:40px;color:#f7c948;font-weight:600;}
-.rules,.why{max-width:800px;margin:auto;}
-.rules li,.why li{margin:10px 0;color:#dcdcdc;}
-.divider{text-align:center;margin:60px 0;color:#444;}
-footer{text-align:center;padding:60px 20px;background:#07070a;}
-footer h2{font-size:2rem;margin-bottom:15px;}
-footer p{color:#cfcfcf;margin-bottom:20px;}
+
+/* Telegram Highlight */
+.telegram-btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 32px;
+background:linear-gradient(135deg,#0088cc,#00c6ff);
+color:#fff;
+font-weight:600;
+border-radius:40px;
+animation:pulse 2s infinite;
+box-shadow:0 8px 25px rgba(0,136,204,0.6);
+transition:0.3s;
+}
+.telegram-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 35px rgba(0,136,204,0.9);
+}
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(0,136,204,0.7);}
+70%{box-shadow:0 0 0 18px rgba(0,136,204,0);}
+100%{box-shadow:0 0 0 0 rgba(0,136,204,0);}
+}
+
+/* Floating Buttons */
+.float-btn{
+position:fixed;
+right:20px;
+padding:12px 20px;
+border-radius:50px;
+font-weight:600;
+z-index:999;
+}
+.telegram-float{bottom:80px;background:#0088cc;color:#fff;}
+.whatsapp-float{bottom:20px;background:#25D366;color:#000;}
+
+section{margin-top:80px}
+section h2{text-align:center;font-size:2rem;margin-bottom:40px}
+
+/* Accordion */
+.accordion-btn{
+width:100%;
+background:#13131a;
+color:#f7c948;
+padding:20px;
+border-radius:16px;
+border:1px solid #1f1f2b;
+text-align:left;
+font-weight:600;
+cursor:pointer;
+margin-bottom:10px;
+}
+.accordion-content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+background:#111117;
+border-radius:12px;
+padding:0 20px;
+}
+.accordion-content p{color:#d0d0d0;margin:10px 0}
+
+.highlight{text-align:center;margin-top:40px;color:#f7c948;font-weight:600}
+
+.rules,.why{max-width:800px;margin:auto}
+.rules li,.why li{margin:10px 0;color:#dcdcdc}
+
+.divider{text-align:center;margin:60px 0;color:#444}
+
+footer{text-align:center;padding:60px 20px;background:#07070a}
+footer h2{margin-bottom:15px}
+footer p{color:#cfcfcf;margin-bottom:20px}
+.btn{
+display:inline-block;
+padding:14px 32px;
+background:linear-gradient(135deg,#f7c948,#ff9f1c);
+color:#000;
+font-weight:600;
+border-radius:40px;
+}
 </style>
 </head>
+
 <body>
 
-<!-- LOGIN PAGE -->
-<div id="loginPage" class="login-container">
-  <div class="left">
-    <h2>GROW<span style="color:#fff">PRIME</span></h2>
-    <p>One Course — Multiple Income Skills<br>Trading • Dropshipping • Freelancing • Reels Growth</p>
-  </div>
-  <div class="right">
-    <h2>Login / Sign Up</h2>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="signup()">Sign Up</button>
-    <button onclick="login()">Login</button>
-    <div class="whatsapp" onclick="whatsappJoin()">Join via WhatsApp</div>
-    <div class="note">Click WhatsApp and send:<br><b>I want to join GROWPRIME</b></div>
-  </div>
+<header class="container">
+<h1>GROW<span>PRIME</span></h1>
+<p>🚀 ONE COURSE — MULTIPLE INCOME SKILLS</p>
+
+<div class="price-box">
+<div class="old-price">₹2999</div>
+<div class="new-price">₹799 Only ✅</div>
 </div>
 
-<!-- DASHBOARD / COURSE PAGE -->
-<div id="dashboard">
-<header class="container">
-  <h1>GROW<span>PRIME</span></h1>
-  <p>🚀 ONE COURSE — MULTIPLE INCOME SKILLS</p>
-  <div class="price-box">
-    <div class="old-price">₹2999</div>
-    <div class="new-price">₹799 Only ✅</div>
-  </div>
-  <div class="offer-badge">🔥 LIMITED TIME OFFER</div>
-  <button onclick="logout()" class="btn" style="margin-top:20px;">Logout</button>
+<div class="offer-badge">🔥 LIMITED TIME OFFER</div>
+
+<a href="https://t.me/Growprimee" target="_blank" class="telegram-btn">
+🚀 Join Telegram For Updates
+</a>
 </header>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/918601169985"
-   style="position:fixed;bottom:20px;right:20px;background:#25D366;color:#000;padding:14px 22px;border-radius:50px;font-weight:600;z-index:999;box-shadow:0 10px 30px rgba(0,0,0,0.4)">
-   💬 Chat on WhatsApp
-</a>
+<!-- Floating Buttons -->
+<a href="https://t.me/Growprimee" class="float-btn telegram-float">📢 Telegram</a>
+<a href="https://wa.me/918601169985" class="float-btn whatsapp-float">💬 WhatsApp</a>
 
 <section class="container">
-  <h2>⏳ Limited Time Access</h2>
-  <p style="text-align:center;color:#cfcfcf">
-    Seats are filling fast. Action-takers earn. Viewers don’t.
-  </p>
-  <div id="timer" style="text-align:center;font-size:1.8rem;color:#f7c948;font-weight:700;margin:20px 0">00:00:00</div>
-  <h2 style="margin-top:60px">What You Will Learn</h2>
-  <div class="grid">
-    <div class="card"><h3>🎥 Viral Reels Formula</h3><p>Instagram & content growth strategies.</p></div>
-    <div class="card"><h3>🛒 Dropshipping Basics</h3><p>Product selection, ads & store setup.</p></div>
-    <div class="card"><h3>📊 Trading (Beginner)</h3><p>Charts, risk control & mindset.</p></div>
-    <div class="card"><h3>💻 Freelancing Skills</h3><p>Client systems & services.</p></div>
-    <div class="card"><h3>📢 IG + Telegram Growth</h3><p>Audience & monetization.</p></div>
-  </div>
-  <div class="highlight">✅ Step-by-Step • Mobile Friendly • No Fake Promises</div>
+
+<h2>⏳ Limited Time Access</h2>
+<p style="text-align:center;color:#cfcfcf">Seats are filling fast. Action-takers earn.</p>
+
+<div id="timer" style="text-align:center;font-size:1.8rem;color:#f7c948;font-weight:700;margin:20px 0">
+00:00:00
+</div>
+
+<h2 style="margin-top:60px">What You Will Learn</h2>
+
+<!-- Trading -->
+<button class="accordion-btn">
+📊 Trading (Beginner)<br>
+<small style="color:#aaa;font-weight:400">Click here for course details ⬇</small>
+</button>
+<div class="accordion-content">
+<p><b>Course Roadmap:</b> Market Foundations, Charts, Strategy, Risk, Psychology, Execution</p>
+<p><b>How To Use:</b> Start Module 1 → Follow Sequence → Practice → Stay Disciplined</p>
+<p>🎥 HD Video Lessons + 📄 PDF Notes</p>
+</div>
+
+<!-- Dropshipping -->
+<button class="accordion-btn">
+🛒 Dropshipping<br>
+<small style="color:#aaa;font-weight:400">Click here for course details ⬇</small>
+</button>
+<div class="accordion-content">
+<p>Product Research, Store Setup, Supplier System, Ads Strategy, Scaling</p>
+<p>🎥 Step-by-Step Videos + 📄 Setup Guides</p>
+</div>
+
+<!-- Freelancing -->
+<button class="accordion-btn">
+💻 Freelancing<br>
+<small style="color:#aaa;font-weight:400">Click here for course details ⬇</small>
+</button>
+<div class="accordion-content">
+<p>Skill Selection, Profile Setup, Proposal Writing, Client Hunting</p>
+<p>🎥 Client System Videos + 📄 Proposal Templates</p>
+</div>
+
+<!-- Reels -->
+<button class="accordion-btn">
+🎥 Reels Growth<br>
+<small style="color:#aaa;font-weight:400">Click here for course details ⬇</small>
+</button>
+<div class="accordion-content">
+<p>Hook Formula, Script Writing, Editing System, Posting Strategy, Monetization</p>
+<p>🎥 Growth Videos + 📄 Script Templates</p>
+</div>
+
+<div class="highlight">
+✅ Step-by-Step • Mobile Friendly • No Fake Promises
+</div>
+
 </section>
 
-<div class="divider">﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌</div>
+<div class="divider">﹌﹌﹌﹌﹌﹌﹌﹌﹌</div>
 
 <section class="container rules">
-  <h2>📘 Learning Rules</h2>
-  <ul>
-    <li>✔ Follow course order</li>
-    <li>✔ Practice before earning</li>
-    <li>✔ Don’t compare</li>
-    <li>✔ Track progress</li>
-  </ul>
+<h2>📘 Learning Rules</h2>
+<ul>
+<li>✔ Follow course order</li>
+<li>✔ Practice before earning</li>
+<li>✔ Don’t compare progress</li>
+<li>✔ Track improvement</li>
+</ul>
 </section>
 
-<div class="divider">﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌</div>
+<div class="divider">﹌﹌﹌﹌﹌﹌﹌﹌﹌</div>
 
 <section class="container why">
-  <h2>🌟 Why GrowPrime?</h2>
-  <ul>
-    <li>• Structured learning</li>
-    <li>• Beginner-friendly</li>
-    <li>• No hype</li>
-    <li>• Skill-based</li>
-  </ul>
+<h2>🌟 Why GrowPrime?</h2>
+<ul>
+<li>• Structured learning roadmap</li>
+<li>• Beginner friendly system</li>
+<li>• No hype – skill focused</li>
+<li>• Long term mindset building</li>
+</ul>
 </section>
 
 <footer>
-  <h2>🔐 GrowPrime Premium Access</h2>
-  <p>📲 Make payment via WhatsApp</p>
-  <a class="btn" href="https://wa.me/918601169985">Pay ₹799 & Join Now</a>
-  <p style="margin-top:20px;font-size:0.85rem">
-    After payment, send screenshot to receive your private Telegram link.
-  </p>
-  <p style="margin-top:25px;font-size:0.9rem;color:#999">
-    🔥 Action-takers earn. Viewers don’t.<br>
-    Skills pay forever. Shortcuts expire.
-  </p>
+<h2>🔐 GrowPrime Premium Access</h2>
+<p>📲 Make payment via WhatsApp & send screenshot</p>
+
+<a class="btn" href="https://wa.me/918601169985">
+Pay ₹799 & Join Now
+</a>
+
+<p style="margin-top:20px;font-size:0.85rem">
+After payment, you’ll receive private Telegram access.
+</p>
+
+<p style="margin-top:25px;font-size:0.9rem;color:#999">
+🔥 Action-takers earn. Viewers don’t.
+</p>
 </footer>
-</div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } 
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-/* 🔥 FIREBASE CONFIG */
-const firebaseConfig = {
-  apiKey: "AIzaSyB2xTEWUP-MuwxtvHoC0i4oIIdBEROIaaU",
-  authDomain: "growprime.firebaseapp.com",
-  projectId: "growprime",
-  storageBucket: "growprime.firebasestorage.app",
-  messagingSenderId: "324445441674",
-  appId: "1:324445441674:web:b6df8fc6161a0aa3826773"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-const loginPage = document.getElementById("loginPage");
-const dashboard = document.getElementById("dashboard");
-
-window.signup = function(){
-  const emailValue = document.getElementById("email").value.trim();
-  const passwordValue = document.getElementById("password").value.trim();
-  createUserWithEmailAndPassword(auth, emailValue, passwordValue)
-  .then(()=> alert("Account Created Successfully"))
-  .catch(err=> alert(err.message));
-}
-
-window.login = function(){
-  const emailValue = document.getElementById("email").value.trim();
-  const passwordValue = document.getElementById("password").value.trim();
-  signInWithEmailAndPassword(auth, emailValue, passwordValue)
-  .then(()=> alert("Login Successful"))
-  .catch(err=> alert(err.message));
-}
-
-window.logout = function(){
-  signOut(auth);
-}
-
-window.whatsappJoin = function(){
-  window.open("https://wa.me/918601169985?text=I%20want%20to%20join%20GROWPRIME");
-}
-
-// Show dashboard only if logged in
-onAuthStateChanged(auth, user => {
-  if(user){
-    loginPage.style.display = "none";
-    dashboard.style.display = "block";
-  } else {
-    loginPage.style.display = "flex";
-    dashboard.style.display = "none";
-  }
-});
-
-// Timer in dashboard
-let time = 24*60*60;
-const timerEl = document.getElementById("timer");
+<script>
+let time=24*60*60;
+const timer=document.getElementById("timer");
 setInterval(()=>{
-  const h = String(Math.floor(time/3600)).padStart(2,"0");
-  const m = String(Math.floor((time%3600)/60)).padStart(2,"0");
-  const s = String(time%60).padStart(2,"0");
-  timerEl.textContent = `${h}:${m}:${s}`;
-  if(time>0) time--;
+const h=String(Math.floor(time/3600)).padStart(2,"0");
+const m=String(Math.floor((time%3600)/60)).padStart(2,"0");
+const s=String(time%60).padStart(2,"0");
+timer.textContent=`${h}:${m}:${s}`;
+if(time>0)time--;
 },1000);
+
+document.querySelectorAll(".accordion-btn").forEach(btn=>{
+btn.addEventListener("click",()=>{
+const content=btn.nextElementSibling;
+content.style.maxHeight=content.style.maxHeight?null:content.scrollHeight+"px";
+});
+});
 </script>
 
 </body>
